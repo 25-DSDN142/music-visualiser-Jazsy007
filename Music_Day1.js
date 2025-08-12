@@ -9,6 +9,7 @@ let otherellipse;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
+
   background(20)
   textFont('Impact'); // please use CSS safe fonts
   rectMode(CENTER)
