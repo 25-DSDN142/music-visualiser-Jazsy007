@@ -16,7 +16,7 @@ drawingContext.shadowBlur = 50
 drawingContext.shadowColor = color(drum, 70, 100)
 
 
-let drummap = map(drum,0, 100, 20, 110)
+let drummap = map(bass,0, 100, 20, 110)
 let blue = color(91, 78, 100)
 let pink = color(52, 78, 100)
 let lerpAMT = map(vocal,0, 100, 0, 1)

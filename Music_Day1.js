@@ -9,6 +9,7 @@ let otherellipse;
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
+let seconds = counter/60
 
   background(20)
   textFont('Impact'); // please use CSS safe fonts
@@ -56,6 +57,7 @@ drawingContext.shadowBlur = 42
 drawingContext.shadowColor = color(255)
  // display "words"
    textAlign(CENTER);
-   textSize(vocal);
+   textSize(20);
    text(words, 640, 360);
+   text(seconds, 200, 360);
 }
