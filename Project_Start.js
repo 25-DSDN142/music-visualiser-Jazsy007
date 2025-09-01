@@ -57,7 +57,7 @@ fill(255)
 // rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 
 
-// if statment 1 // 2.5
+// if statment 1 
 if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70 || seconds > 127.5 && seconds < 146) {
 fill (245, 187, 29) // yellow
 stroke (245, 187, 29)
@@ -168,6 +168,7 @@ rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 }
 
 /// back to if statment 1 
+// if statment 4
 if (seconds > 70 && seconds < 77.5) {
 
 
@@ -207,7 +208,7 @@ rect(1098, 440, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 }
 
-// if statment 4
+// if statment 5
 if (seconds > 77.5 && seconds < 91) {
   
 // square bars from top and bottom / 7
@@ -275,7 +276,7 @@ rect(1213, rectstep, 60, 60, 10);
 }
 } 
 
-// if statment 5
+// if statment 6
 if (seconds > 91 && seconds < 123) {
 // square bars from top and bottom outline / 8
 stroke (120, 255, 255) // cyan 
@@ -343,7 +344,7 @@ rect(1213, rectstep, 60, 60, 10);
 }
 }
 
-// if statment 6
+// if statment 7
 if (seconds > 123 && seconds < 127.5) {
 // square bars from top and bottom outline with crics / 8
 stroke (120, 255, 255) // cyan 
@@ -478,7 +479,7 @@ rect(1213, rectstep, 25, 25, 100);
 
 /// back to if statment 1 
 
-// if statment 7
+// if statment 8
 if (seconds > 146 && seconds < 201) {
 
 fill (0) 
@@ -721,7 +722,7 @@ rect(1213, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 
 }
 
-// if statment 8
+// if statment 9
 if (seconds > 201 && seconds < 215) {
   
 // circs bars from top and bottom / end
@@ -790,12 +791,4 @@ rect(1213, rectstep, 60, 60, 100);
 } 
 
 // 222 end
-
-// // ellipse(10,0++,10);
-// // if (starsmove > 720) {
-// // starsmove = 0
-// // }
-
 }
-
- 
