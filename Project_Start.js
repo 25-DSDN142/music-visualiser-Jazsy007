@@ -1,6 +1,10 @@
 // const canvasWidth = 1280;
 // const canvasHeight = 720;
 
+let x = [], y = [], speed = [], size = [];
+let NumLights = 150;
+let initialized = false; // so we only set them up once
+
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
@@ -20,6 +24,32 @@ fill(255)
    //text(words, 640, 360);
    text(seconds, 200, 360);
 
+  // Initialize background lights only once
+  if (!initialized) {
+    for (let i = 0; i < NumLights; i++) {
+      
+      x[i] = random(width);
+      y[i] = random(-height, 0);
+      speed[i] = random(1, 1.5);
+      size[i] = random(6, 10);
+    }
+    initialized = true;
+  }
+
+  // Update + draw background lights
+  for (let i = 0; i < NumLights; i++) {
+    y[i] += speed[i];
+    if (y[i] > height) {
+      y[i] = random(-20, 0);
+      x[i] = random(width);
+    }
+  drawingContext.shadowBlur = 15
+drawingContext.shadowColor = color(255, 204, 65)
+noStroke()
+ fill(255, 204, 65, 140);
+ 
+    ellipse(x[i], y[i], size[i]);
+  }
 // let cornerRadius = 100; // start with rounded corners
 // let vocalmapcirc = map(vocal,0, 100, 45, 80)
 //      // draw the rectangle with current corner radius
@@ -61,6 +91,8 @@ fill(255)
 //  ellipse(x, 0, 20)
 // }
 
+
+////////// colours
 // light blue - 68, 246, 255
 // dark blue - 15, 107, 255
 // light pink - 255, 125, 183
@@ -69,7 +101,7 @@ fill(255)
 // circles = pink 
 // squares = blue 
 
-
+///////////// code i am using 
 // if statment 1 
 if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70 || seconds > 127.5 && seconds < 146) {
 fill (255, 125, 183) // light pink
@@ -614,6 +646,7 @@ let darkpink = color(255, 35, 134)
 strokeWeight(6)
 fill(0)
 drawingContext.shadowBlur = 42
+let drummap4= map(drum,0, 100, 1, 10)
 let lerpColorAmt2; 
 let drumColor2; 
 
@@ -625,104 +658,103 @@ let drumColor2;
 // drawingContext.shadowBlur = 42
 // drawingContext.shadowColor = color(245, 187, 29)
 
-let drummap4= map(drum,0, 100, 1, 10)
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(70, rectstep, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(181, -rectstep+720, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(293, rectstep, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(408, -rectstep+720, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(523, rectstep, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(638, -rectstep+720, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(753, rectstep, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(868, -rectstep+720, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(983, rectstep, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(1098, -rectstep+720, 25, 25, 100);
 }
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
 lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(1213, rectstep, 25, 25, 100);
 }
 
@@ -733,73 +765,120 @@ rect(1213, rectstep, 25, 25, 100);
 // if statment 8
 if (seconds > 146 && seconds < 201) {
 
-fill (0) 
-stroke (245, 187, 29) // yellow
+let lightpink = color(255, 125, 183)
+let darkpink = color(255, 35, 134)
 strokeWeight(8)
+fill(0)
 drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(245, 187, 29)
-
 let drummap = map(drum,0, 100, 1, 4)
+let lerpColorAmt2; 
+let drumColor2; 
+
+
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(70, rectstep, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(181, -rectstep+720, 60, 60, 100);
 }
 
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(293, rectstep, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(408, -rectstep+720, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(523, rectstep, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(638, -rectstep+720, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(753, rectstep, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(868, -rectstep+720, 60, 60, 100);
 }
 
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(983, rectstep, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(1098, -rectstep+720, 60, 60, 100);
 }
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
+lerpColorAmt2 = map(i, 1, 7, 0,1)
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+drawingContext.shadowColor = color(drumColor2)
+stroke (drumColor2)
 rect(1213, rectstep, 60, 60, 100);
 }
 
   // big circles / 2, 3, 5
-let vocalmapcirc = map(vocal,0, 100, 55, 64)
+// let vocalmapcirc = map(vocal,0, 100, 55, 64)
 // rect(70, 70, vocalmapcirc, vocalmapcirc, 100); // cic
 // rect(70, 140, vocalmapcirc, vocalmapcirc, 100); // cic
 // rect(70, 210, vocalmapcirc, vocalmapcirc, 100); // cic
@@ -855,64 +934,112 @@ let vocalmapcirc = map(vocal,0, 100, 55, 64)
 // rect(1213, 210, vocalmapcirc, vocalmapcirc, 100);// cic
 // rect(1213, 280, vocalmapcirc, vocalmapcirc, 100);// cic
 
-fill (0)
-stroke (120, 255, 255) // cyan 
-strokeWeight(8)
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(120, 255, 255)
 
+let lightblue = color(68, 246, 255)
+let darkblue = color(15, 107, 255)
+strokeWeight(8)
+fill(0)
+drawingContext.shadowBlur = 42
 let drummap2 = map(drum,0, 100, 1, 5)
+let vocalmapcirc = map(vocal,0, 100, 55, 64)
+let lerpColorAmt; 
+let drumColor; 
+
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(70, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(181, rectstep, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(293, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(408, rectstep, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(523, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(638, rectstep, vocalmapcirc, vocalmapcirc, 10);
 }
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(753, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(868, rectstep, vocalmapcirc, vocalmapcirc, 10);
 }
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(983, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(1098, rectstep, vocalmapcirc, vocalmapcirc, 10);
 }
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
+lerpColorAmt = map(i, 1, 7, 0,1)
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+drawingContext.shadowColor = color(drumColor)
+stroke (drumColor)
 rect(1213, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 // /// rectangles 
@@ -1104,6 +1231,5 @@ stroke (drumColor)
 rect(1213, rectstep, 60, 60, 100);
 }
 } 
-
+}
 // 222 end
-} 
