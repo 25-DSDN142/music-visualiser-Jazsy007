@@ -3,26 +3,33 @@
 
 let x = [], y = [], speed = [], size = [];
 let NumLights = 150;
-let initialized = false; // so we only set them up once
+let initialized = false; // so lights only set up once
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
 let seconds = counter/60
 
-  background(20)
-  textFont('Impact'); // please use CSS safe fonts
-  rectMode(CENTER)
-  textSize(10);
+background(0)
+rectMode(CENTER)
+  // textFont('Impact'); // CSS safe font
+  // textSize(10);
 
-  //colorMode(HSB)
+////////// colours
+// light blue - 68, 246, 255
+// dark blue - 15, 107, 255
+// light pink - 255, 125, 183
+// dark pink - 255, 35, 134 
+// gold - 255, 204, 65
+// circles = pink 
+// squares = blue 
 
-fill(255)
- // display "words"
-   textAlign(CENTER);
-   textSize(20);
-   //text(words, 640, 360);
-   text(seconds, 200, 360);
+// fill(255)
+//  // display "words"
+//    textAlign(CENTER);
+//    textSize(20);
+//    text(seconds, 200, 360);
+//    text(words, 640, 360);
 
   // Initialize background lights only once
   if (!initialized) {
@@ -50,58 +57,7 @@ noStroke()
  
     ellipse(x[i], y[i], size[i]);
   }
-// let cornerRadius = 100; // start with rounded corners
-// let vocalmapcirc = map(vocal,0, 100, 45, 80)
-//      // draw the rectangle with current corner radius
-//   rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
-//   // gradually reduce corner radius toward 10
-//   if (cornerRadius > 10) {
-//     cornerRadius = 10; // smaller = slower transition
-//   }
 
-// let cornerRadius = map(counter, 0, 222, 100, 10);
-
-// let vocalmapcirc = map(vocal,0, 100, 45, 80)
-// rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
-
-// let cornerRadius = map(counter, 70, 79, 100, 10, true);
-// let vocalmapcirc = map(vocal,0, 100, 45, 80)
-// rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
-// if (cornerRadius > 10) { cornerRadius = 10}
-
-
-// let yellow = color(245, 187, 29)
-// let cyan = color(120, 255, 255)
-// let lerpAMT = map(counter/4,0, 100, 0, 1)
-
-
-// lerpColor(yellow, cyan, lerpAMT)
-// fill (lerpColor(yellow, cyan, lerpAMT))
-// stroke (lerpColor(yellow, cyan, lerpAMT))
-// drawingContext.shadowBlur = 42
-// drawingContext.shadowColor = color(lerpColor(yellow, cyan, lerpAMT))
-
-// let cornerRadius = map(counter, 0, 222, 100, 10, true);
-// let vocalmapcirc = map(vocal,0, 100, 45, 80)
-// rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
-// rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
-
-
-// if (seconds > 0 && seconds < 222) {
-//  ellipse(x, 0, 20)
-// }
-
-
-////////// colours
-// light blue - 68, 246, 255
-// dark blue - 15, 107, 255
-// light pink - 255, 125, 183
-// dark pink - 255, 35, 134 
-// gold - 255, 204, 65
-// circles = pink 
-// squares = blue 
-
-///////////// code i am using 
 // if statment 1 
 if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70 || seconds > 127.5 && seconds < 146) {
 fill (255, 125, 183) // light pink
@@ -109,7 +65,7 @@ stroke (255, 125, 183)
 drawingContext.shadowBlur = 42
 drawingContext.shadowColor = color(255, 125, 183)
   // big circles / 2, 3, 5
-let vocalmapcirc = map(vocal,0, 100, 45, 80)
+let vocalmapcirc = map(vocal,0, 100, 45, 85)
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -134,8 +90,8 @@ fill (255, 125, 183) // light pink
 stroke (255, 125, 183)
 drawingContext.shadowBlur = 42
 drawingContext.shadowColor = color(255, 125, 183)
-  // big circles / 2, 3, 5
-let vocalmapcirc = map(vocal,0, 100, 45, 80)
+// big circles 
+let vocalmapcirc = map(vocal,0, 100, 45, 85)
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -154,11 +110,11 @@ rect(1098, 440, vocalmapcirc, vocalmapcirc, 100);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 
 
-  // little circles / 3,5
-  fill (255, 35, 134) // dark pink
-  stroke (255, 35, 134)
+// little circles 
+fill (255, 35, 134) // dark pink
+stroke (255, 35, 134)
 drawingContext.shadowColor = color(255, 35, 134)
-let vocalmapcircsmall = map(vocal,0, 100, 25, 55)
+let vocalmapcircsmall = map(vocal,0, 100, 25, 60)
 rect(70, 420, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(70, 560, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(293, 210, vocalmapcircsmall, vocalmapcircsmall, 100);
@@ -194,8 +150,8 @@ strokeWeight(10)
 fill(0)
 drawingContext.shadowBlur = 42
 drawingContext.shadowColor = color(255, 125, 183)
-  // big circles outline / 4
-let vocalmapcirc = map(vocal,0, 100, 45, 80)
+// big circles outline
+let vocalmapcirc = map(vocal,0, 100, 45, 85)
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -213,12 +169,12 @@ rect(1098, 650, vocalmapcirc, vocalmapcirc, 100);
 rect(1098, 440, vocalmapcirc, vocalmapcirc, 100);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 
-  // big circles outline / 4
-  stroke (255, 35, 134 )  // dark pink 
+// little circles outline 
+stroke (255, 35, 134 )  // dark pink 
 strokeWeight(8)
 fill(0)
 drawingContext.shadowColor = color(255, 35, 134 )
-let vocalmapcircsmall = map(vocal,0, 100, 15, 35)
+let vocalmapcircsmall = map(vocal,0, 100, 15, 40)
 rect(70, 140, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(293, 70, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(181, 510, vocalmapcircsmall, vocalmapcircsmall, 100);
@@ -238,14 +194,14 @@ rect(1213, 70, vocalmapcircsmall, vocalmapcircsmall, 100);
 }
 
 /// back to if statment 1 
+
 // if statment 4
-if (seconds > 70 && seconds < 77.5) {
+if (seconds > 70 && seconds < 79.3) {
 
-
+// Change colour from pink to blue 
 let lightpink = color(255, 125, 183)
 let lightblue = color(68, 246, 255)
 let lerpAMT = map(counter-4200,0, 100, 0, 1)
-
 
 lerpColor(lightpink, lightblue, lerpAMT)
 fill (lerpColor(lightpink, lightblue, lerpAMT))
@@ -253,13 +209,10 @@ stroke (lerpColor(lightpink, lightblue, lerpAMT))
 drawingContext.shadowBlur = 42
 drawingContext.shadowColor = color(lerpColor(lightpink, lightblue, lerpAMT))
 
-// fill (245, 187, 29) // yellow
-// stroke (245, 187, 29)
-// drawingContext.shadowBlur = 42
-// drawingContext.shadowColor = color(245, 187, 29)
-  // big circles / 2, 3, 5
+// big circles 
+// change from circles to squares
 let cornerRadius = map(counter-4100, 0, 222, 100, 10, true);
-let vocalmapcirc = map(vocal,0, 100, 45, 68)
+let vocalmapcirc = map(vocal,0, 100, 45, 73)
 rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(181, 510, vocalmapcirc, vocalmapcirc, cornerRadius);
@@ -279,11 +232,9 @@ rect(1213, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 }
 
 //if statment 5
-if (seconds > 77.5 && seconds < 91){
+if (seconds > 79.3 && seconds < 91){
   
-// square bars from top and bottom / 7
-
-
+// square bars from top and bottom 
 let lightblue = color(68, 246, 255)
 let darkblue = color(15, 107, 255)
 strokeWeight(1)
@@ -415,9 +366,8 @@ rect(1213, rectstep, 60, 60, 10);
 
 // if statment 6
 if (seconds > 91 && seconds < 123) {
-// square bars from top and bottom outline / 8
 
-
+// square bars from top and bottom outline
 let lightblue = color(68, 246, 255)
 let darkblue = color(15, 107, 255)
 strokeWeight(8)
@@ -529,8 +479,8 @@ rect(1213, rectstep, 60, 60, 10);
 
 // if statment 7
 if (seconds > 123 && seconds < 127.5) {
-// square bars from top and bottom outline with crics / 8
 
+// square bars from top and bottom outline with circles inisde
 let lightblue = color(68, 246, 255)
 let darkblue = color(15, 107, 255)
 strokeWeight(8)
@@ -650,14 +600,6 @@ let drummap4= map(drum,0, 100, 1, 10)
 let lerpColorAmt2; 
 let drumColor2; 
 
-// lerpColorAmt2 = map(i, 1, 7, 0,1)
-// drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt);
-// drawingContext.shadowColor = color(drumColor)
-// stroke (drumColor)
-
-// drawingContext.shadowBlur = 42
-// drawingContext.shadowColor = color(245, 187, 29)
-
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
@@ -765,16 +707,17 @@ rect(1213, rectstep, 25, 25, 100);
 // if statment 8
 if (seconds > 146 && seconds < 201) {
 
+// Circles and squares from top and bottom
+
+// circles
 let lightpink = color(255, 125, 183)
 let darkpink = color(255, 35, 134)
 strokeWeight(8)
 fill(0)
 drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 4)
+let drummap = map(drum,0, 100, 1, 5)
 let lerpColorAmt2; 
 let drumColor2; 
-
-
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
@@ -877,70 +820,13 @@ stroke (drumColor2)
 rect(1213, rectstep, 60, 60, 100);
 }
 
-  // big circles / 2, 3, 5
-// let vocalmapcirc = map(vocal,0, 100, 55, 64)
-// rect(70, 70, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(70, 140, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(70, 210, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(70, 280, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(181, 650, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(181, 580, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(181, 510, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(181, 440, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(293, 70, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(293, 140, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(293, 210, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(293, 280, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(408, 650, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(408, 580, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(408, 510, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(408, 440, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(523, 70, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(523, 140, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(523, 210, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(523, 280, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(638, 650, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(638, 580, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(638, 510, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(638, 440, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(753, 70, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(753, 140, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(753, 210, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(753, 280, vocalmapcirc, vocalmapcirc, 100);// cic
-
-// rect(868, 650, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(868, 580, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(868, 510, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(868, 440, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(983, 70, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(983, 140, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(983, 210, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(983, 280, vocalmapcirc, vocalmapcirc, 100);// cic
-
-// rect(1098, 650, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(1098, 580, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(1098, 510, vocalmapcirc, vocalmapcirc, 100); // cic
-// rect(1098, 440, vocalmapcirc, vocalmapcirc, 100); // cic
-
-// rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(1213, 140, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(1213, 210, vocalmapcirc, vocalmapcirc, 100);// cic
-// rect(1213, 280, vocalmapcirc, vocalmapcirc, 100);// cic
-
-
+// Squares 
 let lightblue = color(68, 246, 255)
 let darkblue = color(15, 107, 255)
 strokeWeight(8)
 fill(0)
 drawingContext.shadowBlur = 42
-let drummap2 = map(drum,0, 100, 1, 5)
+let drummap2 = map(drum,0, 100, 1, 6)
 let vocalmapcirc = map(vocal,0, 100, 55, 64)
 let lerpColorAmt; 
 let drumColor; 
@@ -1042,74 +928,12 @@ drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
 rect(1213, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
-// /// rectangles 
-// rect(70, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(70, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(70, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(70, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
-// rect(181, 70, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(181, 140, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(181, 210, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(181, 280, vocalmapcirc, vocalmapcirc, 10); //rect
-
-// rect(293, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(293, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(293, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(293, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
-// rect(408, 70, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(408, 140, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(408, 210, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(408, 280, vocalmapcirc, vocalmapcirc, 10); //rect
-
-// rect(523, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(523, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(523, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(523, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
-// rect(638, 70, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(638, 140, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(638, 210, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(638, 280, vocalmapcirc, vocalmapcirc, 10); //rect
-
-// rect(753, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(753, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(753, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(753, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
-// rect(868, 70, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(868, 140, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(868, 210, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(868, 280, vocalmapcirc, vocalmapcirc, 10); //rect
-
-// rect(983, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(983, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(983, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(983, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
-// rect(1098, 70, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(1098, 140, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(1098, 210, vocalmapcirc, vocalmapcirc, 10); //rect
-// rect(1098, 280, vocalmapcirc, vocalmapcirc, 10); //rect
-
-// rect(1213, 650, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(1213, 580, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(1213, 510, vocalmapcirc, vocalmapcirc, 10); // rect
-// rect(1213, 440, vocalmapcirc, vocalmapcirc, 10); // rect
-
 }
 
 // if statment 9
 if (seconds > 201 && seconds < 215) {
   
-// circs bars from top and bottom / end
-
-// fill (245, 187, 29) 
-// stroke (245, 187, 29) // yellow
-// strokeWeight(1)
-// drawingContext.shadowBlur = 42
-// drawingContext.shadowColor = color(245, 187, 29)
+// Circles bars from top and bottom  
 
 let lightpink = color(255, 125, 183)
 let darkpink = color(255, 35, 134)
@@ -1117,7 +941,6 @@ strokeWeight(1)
 drawingContext.shadowBlur = 42
 let lerpColorAmt; 
 let drumColor; 
-
 
 let drummap3 = map(drum,0, 100, 1, 8)
 
@@ -1232,4 +1055,3 @@ rect(1213, rectstep, 60, 60, 100);
 }
 } 
 }
-// 222 end
