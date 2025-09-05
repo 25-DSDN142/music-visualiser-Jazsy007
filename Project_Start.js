@@ -1,6 +1,7 @@
 // const canvasWidth = 1280;
 // const canvasHeight = 720;
 
+
 let x = [], y = [], speed = [], size = [];
 let NumLights = 150;
 let initialized = false; // so lights only set up once
