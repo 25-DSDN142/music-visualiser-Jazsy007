@@ -33,31 +33,31 @@ rectMode(CENTER)
 //    text(words, 640, 360);
 
   // Initialize background lights only once
-  if (!initialized) {
-    for (let i = 0; i < NumLights; i++) {
+//   if (!initialized) {
+//     for (let i = 0; i < NumLights; i++) {
       
-      x[i] = random(width);
-      y[i] = random(-height, 0);
-      speed[i] = random(1, 1.5);
-      size[i] = random(6, 10);
-    }
-    initialized = true;
-  }
+//       x[i] = random(width);
+//       y[i] = random(-height, 0);
+//       speed[i] = random(1, 1.5);
+//       size[i] = random(6, 10);
+//     }
+//     initialized = true;
+//   }
 
-  // Update + draw background lights
-  for (let i = 0; i < NumLights; i++) {
-    y[i] += speed[i];
-    if (y[i] > height) {
-      y[i] = random(-20, 0);
-      x[i] = random(width);
-    }
-  drawingContext.shadowBlur = 15
-drawingContext.shadowColor = color(255, 204, 65)
-noStroke()
- fill(255, 204, 65, 140);
+//   // Update + draw background lights
+//   for (let i = 0; i < NumLights; i++) {
+//     y[i] += speed[i];
+//     if (y[i] > height) {
+//       y[i] = random(-20, 0);
+//       x[i] = random(width);
+//     }
+//   drawingContext.shadowBlur = 15
+// drawingContext.shadowColor = color(255, 204, 65)
+// noStroke()
+//  fill(255, 204, 65, 140);
  
-    ellipse(x[i], y[i], size[i]);
-  }
+//     ellipse(x[i], y[i], size[i]);
+//   }
 
 // if statment 1 
 if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70 || seconds > 127.5 && seconds < 146) {
@@ -212,7 +212,7 @@ drawingContext.shadowColor = color(lerpColor(lightpink, lightblue, lerpAMT))
 
 // big circles 
 // change from circles to squares
-let cornerRadius = map(counter-4100, 0, 222, 100, 10, true);
+let cornerRadius = map(counter-4000, 0, 222, 100, 10, true);
 let vocalmapcirc = map(vocal,0, 100, 45, 73)
 rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);

@@ -12,9 +12,6 @@ let seconds = counter/60
 fill (drum, 70, 100)
 stroke (drum, 70, 100)
 
-drawingContext.shadowBlur = 50
-drawingContext.shadowColor = color(drum, 70, 100)
-
 
 let drummap = map(bass,0, 100, 20, 110)
 let blue = color(91, 78, 100)
@@ -24,6 +21,8 @@ let ellipseY = 360
 let ellipsesize = 100
 
 
+drawingContext.shadowBlur = 50
+drawingContext.shadowColor = color(drum, 70, 100)
 for(let i = 1; i < drummap; i++) {
 let ellipsestep = i*12;
 ellipse(ellipsestep, ellipseY, ellipsesize); 
