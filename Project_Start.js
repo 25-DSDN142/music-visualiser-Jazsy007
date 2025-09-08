@@ -1,7 +1,6 @@
 // const canvasWidth = 1280;
 // const canvasHeight = 720;
 
-
 let x = [], y = [], speed = [], size = [];
 let NumLights = 150;
 let initialized = false; // so lights only set up once
@@ -13,10 +12,10 @@ let seconds = counter/60
 
 background(0)
 rectMode(CENTER)
-  // textFont('Impact'); // CSS safe font
-  // textSize(10);
+  textFont('Impact'); // CSS safe font
+  textSize(10);
 
-////////// colours
+// //////// colours
 // light blue - 68, 246, 255
 // dark blue - 15, 107, 255
 // light pink - 255, 125, 183
@@ -30,37 +29,37 @@ rectMode(CENTER)
 //    textAlign(CENTER);
 //    textSize(20);
 //    text(seconds, 200, 360);
-//    text(words, 640, 360);
+//   // text(words, 640, 360);
 
-  // Initialize background lights only once
-//   if (!initialized) {
-//     for (let i = 0; i < NumLights; i++) {
+ // Initialize background lights only once
+  if (!initialized) {
+    for (let i = 0; i < NumLights; i++) {
       
-//       x[i] = random(width);
-//       y[i] = random(-height, 0);
-//       speed[i] = random(1, 1.5);
-//       size[i] = random(6, 10);
-//     }
-//     initialized = true;
-//   }
+      x[i] = random(width);
+      y[i] = random(-height, 0);
+      speed[i] = random(1, 1.5);
+      size[i] = random(6, 10);
+    }
+    initialized = true;
+  }
 
-//   // Update + draw background lights
-//   for (let i = 0; i < NumLights; i++) {
-//     y[i] += speed[i];
-//     if (y[i] > height) {
-//       y[i] = random(-20, 0);
-//       x[i] = random(width);
-//     }
-//   drawingContext.shadowBlur = 15
-// drawingContext.shadowColor = color(255, 204, 65)
-// noStroke()
-//  fill(255, 204, 65, 140);
+  // Update + draw background lights
+  for (let i = 0; i < NumLights; i++) {
+    y[i] += speed[i];
+    if (y[i] > height) {
+      y[i] = random(-20, 0);
+      x[i] = random(width);
+    }
+  drawingContext.shadowBlur = 15
+drawingContext.shadowColor = color(255, 204, 65)
+noStroke()
+ fill(255, 204, 65, 140);
  
-//     ellipse(x[i], y[i], size[i]);
-//   }
+    ellipse(x[i], y[i], size[i]);
+  }
 
-// if statment 1 
-if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70 || seconds > 127.5 && seconds < 146) {
+// if statement 1 
+if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70) {
 fill (255, 125, 183) // light pink
 stroke (255, 125, 183)
 drawingContext.shadowBlur = 42
@@ -85,8 +84,8 @@ rect(1098, 440, vocalmapcirc, vocalmapcirc, 100);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 }
 
-// if statment 2
-if (seconds > 15.5 && seconds < 37.5) {
+// if statement 2
+if (seconds > 15.5 && seconds < 37.8) {
 fill (255, 125, 183) // light pink
 stroke (255, 125, 183)
 drawingContext.shadowBlur = 42
@@ -144,8 +143,8 @@ rect(1213, 630, vocalmapcircsmall, vocalmapcircsmall, 100);
 
 }
 
-// // if statment 3
-if (seconds > 37.5 && seconds < 56) {
+// // if statement 3
+if (seconds > 37.8 && seconds < 56) {
 stroke (255, 125, 183)  // light pink
 strokeWeight(10)
 fill(0)
@@ -194,15 +193,15 @@ rect(1098, 440, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(1213, 70, vocalmapcircsmall, vocalmapcircsmall, 100);
 }
 
-/// back to if statment 1 
+/// back to if statement 1 
 
-// if statment 4
+// if statement 4
 if (seconds > 70 && seconds < 79.3) {
 
 // Change colour from pink to blue 
 let lightpink = color(255, 125, 183)
 let lightblue = color(68, 246, 255)
-let lerpAMT = map(counter-4200,0, 100, 0, 1)
+let lerpAMT = map(counter-4380,0, 100, 0, 1)
 
 lerpColor(lightpink, lightblue, lerpAMT)
 fill (lerpColor(lightpink, lightblue, lerpAMT))
@@ -212,7 +211,7 @@ drawingContext.shadowColor = color(lerpColor(lightpink, lightblue, lerpAMT))
 
 // big circles 
 // change from circles to squares
-let cornerRadius = map(counter-4000, 0, 222, 100, 10, true);
+let cornerRadius = map(counter-4200, 0, 222, 100, 10, true);
 let vocalmapcirc = map(vocal,0, 100, 45, 73)
 rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
@@ -232,7 +231,7 @@ rect(1098, 440, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 }
 
-//if statment 5
+//if statement 5
 if (seconds > 79.3 && seconds < 91){
   
 // square bars from top and bottom 
@@ -243,16 +242,6 @@ drawingContext.shadowBlur = 42
 let drummap = map(drum,0, 100, 1, 10)
 let lerpColorAmt; 
 let drumColor; 
-
-for(let i = 1; i < drummap; i++) {
-let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
-fill(drumColor)
-drawingContext.shadowColor = color(drumColor)
-stroke (drumColor)
-rect(70, rectstep, 60, 60, 10);
-}
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
@@ -365,7 +354,7 @@ rect(1213, rectstep, 60, 60, 10);
 }
 } 
 
-// if statment 6
+// if statement 6
 if (seconds > 91 && seconds < 123) {
 
 // square bars from top and bottom outline
@@ -478,7 +467,7 @@ rect(1213, rectstep, 60, 60, 10);
 }
 }
 
-// if statment 7
+// if statement 7
 if (seconds > 123 && seconds < 127.5) {
 
 // square bars from top and bottom outline with circles inisde
@@ -703,10 +692,35 @@ rect(1213, rectstep, 25, 25, 100);
 
 }
 
-/// back to if statment 1 
+// if statement 8
+if (seconds > 127.5 && seconds < 146) {
+// big squares 
+fill (68, 246, 255) // light blue
+stroke (68, 246, 255)
+drawingContext.shadowBlur = 42
+drawingContext.shadowColor = color(68, 246, 255)
 
-// if statment 8
-if (seconds > 146 && seconds < 201) {
+let vocalmapcirc = map(vocal,0, 100, 45, 73)
+rect(70, 140, vocalmapcirc, vocalmapcirc, 10);
+rect(293, 70, vocalmapcirc, vocalmapcirc, 10);
+rect(181, 510, vocalmapcirc, vocalmapcirc, 10);
+rect(181, 300, vocalmapcirc, vocalmapcirc, 10);
+rect(408, 650, vocalmapcirc, vocalmapcirc, 10);
+rect(408, 440, vocalmapcirc, vocalmapcirc, 10);
+rect(523, 210, vocalmapcirc, vocalmapcirc, 10);
+rect(638, 580, vocalmapcirc, vocalmapcirc, 10);
+rect(753, 70, vocalmapcirc, vocalmapcirc, 10);
+rect(753, 280, vocalmapcirc, vocalmapcirc, 10);
+rect(868, 650, vocalmapcirc, vocalmapcirc, 10);
+rect(868, 370, vocalmapcirc, vocalmapcirc, 10);
+rect(983, 140, vocalmapcirc, vocalmapcirc, 10);
+rect(1098, 650, vocalmapcirc, vocalmapcirc, 10);
+rect(1098, 440, vocalmapcirc, vocalmapcirc, 10);
+rect(1213, 70, vocalmapcirc, vocalmapcirc, 10);
+}
+
+// if statement 9
+if (seconds > 146 && seconds < 201.5) {
 
 // Circles and squares from top and bottom
 
@@ -716,7 +730,7 @@ let darkpink = color(255, 35, 134)
 strokeWeight(8)
 fill(0)
 drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 5)
+let drummap = map(drum,0, 100, 1, 4)
 let lerpColorAmt2; 
 let drumColor2; 
 
@@ -827,8 +841,8 @@ let darkblue = color(15, 107, 255)
 strokeWeight(8)
 fill(0)
 drawingContext.shadowBlur = 42
-let drummap2 = map(drum,0, 100, 1, 6)
-let vocalmapcirc = map(vocal,0, 100, 55, 64)
+let drummap2 = map(drum,0, 100, 1, 5)
+let vocalmapcirc = 60 //map(vocal,0, 100, 55, 64)
 let lerpColorAmt; 
 let drumColor; 
 
@@ -931,8 +945,8 @@ rect(1213, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 }
 
-// if statment 9
-if (seconds > 201 && seconds < 215) {
+// if statmeent 10
+if (seconds > 201.5 && seconds < 215) {
   
 // Circles bars from top and bottom  
 
