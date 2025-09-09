@@ -1,6 +1,7 @@
 // const canvasWidth = 1280;
 // const canvasHeight = 720;
 
+// set up for background lights 
 let x = [], y = [], speed = [], size = [];
 let NumLights = 150;
 let initialized = false; // so lights only set up once
@@ -8,12 +9,14 @@ let initialized = false; // so lights only set up once
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 
-let seconds = counter/60
+let seconds = counter/60 // used for working out the if statements 
 
-background(0)
+background(0) // black background 
 rectMode(CENTER)
-  textFont('Impact'); // CSS safe font
-  textSize(10);
+
+// /////////// to delete 
+//   textFont('Impact'); // CSS safe font
+//   textSize(10);
 
 // //////// colours
 // light blue - 68, 246, 255
@@ -29,7 +32,9 @@ rectMode(CENTER)
 //    textAlign(CENTER);
 //    textSize(20);
 //    text(seconds, 200, 360);
-//   // text(words, 640, 360);
+// //   // text(words, 640, 360);
+// ////////////
+
 
  // Initialize background lights only once
   if (!initialized) {
@@ -50,22 +55,25 @@ rectMode(CENTER)
       y[i] = random(-20, 0);
       x[i] = random(width);
     }
-  drawingContext.shadowBlur = 15
-drawingContext.shadowColor = color(255, 204, 65)
+  drawingContext.shadowBlur = 20 // minimal glow on background lights 
+drawingContext.shadowColor = color(255, 204, 65) // yellow colour 
 noStroke()
- fill(255, 204, 65, 140);
- 
+let opacitymap = map(bass,0, 100, 105, 210) // map based on bass volume 
+ fill(255, 204, 65, opacitymap); // yellow colour with opacity that changes based on the bass
     ellipse(x[i], y[i], size[i]);
   }
 
 // if statement 1 
 if (seconds > 2.5 && seconds < 15.5 || seconds > 56 && seconds < 70) {
-fill (255, 125, 183) // light pink
-stroke (255, 125, 183)
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(255, 125, 183)
-  // big circles / 2, 3, 5
-let vocalmapcirc = map(vocal,0, 100, 45, 85)
+drawingContext.shadowBlur = 42 // standard glow amount 
+
+let vocalopacity = map(vocal,0, 100, 160, 255)
+ // big pink circles, size based on vocals
+fill (255, 125, 183, vocalopacity) // light pink
+stroke (255, 125, 183, 0) // light pink
+drawingContext.shadowColor = color(255, 125, 183, vocalopacity) // light pink 
+
+let vocalmapcirc = map(vocal,0, 100, 45, 85) // map based on vocal volume 
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -86,12 +94,15 @@ rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 
 // if statement 2
 if (seconds > 15.5 && seconds < 37.8) {
-fill (255, 125, 183) // light pink
-stroke (255, 125, 183)
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(255, 125, 183)
-// big circles 
-let vocalmapcirc = map(vocal,0, 100, 45, 85)
+drawingContext.shadowBlur = 42 // standard glow amount 
+
+let vocalopacity = map(vocal,0, 100, 160, 255)
+ // big pink circles, size based on vocals
+fill (255, 125, 183, vocalopacity) // light pink
+stroke (255, 125, 183, 0) // light pink
+drawingContext.shadowColor = color(255, 125, 183, vocalopacity) // light pink
+
+let vocalmapcirc = map(vocal,0, 100, 45, 85) // map based on vocal volume 
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -110,11 +121,12 @@ rect(1098, 440, vocalmapcirc, vocalmapcirc, 100);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 
 
-// little circles 
-fill (255, 35, 134) // dark pink
-stroke (255, 35, 134)
-drawingContext.shadowColor = color(255, 35, 134)
-let vocalmapcircsmall = map(vocal,0, 100, 25, 60)
+ // little pink circles, size based on vocals
+fill (255, 35, 134, vocalopacity) // dark pink
+stroke (255, 35, 134, 0) // dark pink
+drawingContext.shadowColor = color(255, 35, 134, vocalopacity) // dark pink
+
+let vocalmapcircsmall = map(vocal,0, 100, 25, 60) // map based on vocal volume 
 rect(70, 420, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(70, 560, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(293, 210, vocalmapcircsmall, vocalmapcircsmall, 100);
@@ -143,15 +155,17 @@ rect(1213, 630, vocalmapcircsmall, vocalmapcircsmall, 100);
 
 }
 
-// // if statement 3
+// if statement 3
 if (seconds > 37.8 && seconds < 56) {
-stroke (255, 125, 183)  // light pink
+drawingContext.shadowBlur = 42 // standard glow amount 
+let vocalopacity = map(vocal,0, 100, 160, 255)
+// big pink circles outline, size based on vocals
+stroke (255, 125, 183, vocalopacity) // light pink
 strokeWeight(10)
-fill(0)
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(255, 125, 183)
-// big circles outline
-let vocalmapcirc = map(vocal,0, 100, 45, 85)
+fill(0) // only shows the stroke/outline of the circles 
+drawingContext.shadowColor = color(255, 125, 183, vocalopacity) // light pink
+
+let vocalmapcirc = map(vocal,0, 100, 45, 85) // map based on vocal volume 
 rect(70, 140, vocalmapcirc, vocalmapcirc, 100);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 100);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 100);
@@ -169,12 +183,13 @@ rect(1098, 650, vocalmapcirc, vocalmapcirc, 100);
 rect(1098, 440, vocalmapcirc, vocalmapcirc, 100);
 rect(1213, 70, vocalmapcirc, vocalmapcirc, 100);
 
-// little circles outline 
-stroke (255, 35, 134 )  // dark pink 
+// little pink circles outline, size based on vocals
+stroke (255, 35, 134, vocalopacity) // dark pink 
 strokeWeight(8)
-fill(0)
-drawingContext.shadowColor = color(255, 35, 134 )
-let vocalmapcircsmall = map(vocal,0, 100, 15, 40)
+fill(0) // only shows the stroke/outline of the circles 
+drawingContext.shadowColor = color(255, 35, 134, vocalopacity) // dark pink 
+
+let vocalmapcircsmall = map(vocal,0, 100, 15, 40) // map based on vocal volume 
 rect(70, 140, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(293, 70, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(181, 510, vocalmapcircsmall, vocalmapcircsmall, 100);
@@ -193,26 +208,27 @@ rect(1098, 440, vocalmapcircsmall, vocalmapcircsmall, 100);
 rect(1213, 70, vocalmapcircsmall, vocalmapcircsmall, 100);
 }
 
-/// back to if statement 1 
+// back to if statement 1 
 
 // if statement 4
 if (seconds > 70 && seconds < 79.3) {
 
 // Change colour from pink to blue 
-let lightpink = color(255, 125, 183)
-let lightblue = color(68, 246, 255)
-let lerpAMT = map(counter-4380,0, 100, 0, 1)
+strokeWeight(0)
+let vocalopacity = map(vocal,0, 100, 160, 255)
+let lightpink = color(255, 125, 183, vocalopacity) // light pink 
+let lightblue = color(68, 246, 255, vocalopacity) // light blue 
+let lerpAMT = map(counter-4380,0, 100, 0, 1) // sets timing of colour change 
 
-lerpColor(lightpink, lightblue, lerpAMT)
-fill (lerpColor(lightpink, lightblue, lerpAMT))
-stroke (lerpColor(lightpink, lightblue, lerpAMT))
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(lerpColor(lightpink, lightblue, lerpAMT))
+lerpColor(lightpink, lightblue, lerpAMT) // changes colour from pink to blue 
+fill (lerpColor(lightpink, lightblue, lerpAMT)) // changes colour from pink to blue 
+stroke (lerpColor(lightpink, lightblue, lerpAMT)) // changes colour from pink to blue 
+drawingContext.shadowBlur = 42 // standard glow amount 
+drawingContext.shadowColor = color(lerpColor(lightpink, lightblue, lerpAMT)) // changes colour from pink to blue 
 
-// big circles 
-// change from circles to squares
-let cornerRadius = map(counter-4200, 0, 222, 100, 10, true);
-let vocalmapcirc = map(vocal,0, 100, 45, 73)
+ // big pink circles change to big blue squares, size based on vocals
+let cornerRadius = map(counter-4200, 0, 222, 100, 10, true); // adjusts corner radius in time with colour change
+let vocalmapcirc = map(vocal,0, 100, 45, 80) // map based on vocal volume 
 rect(70, 140, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(293, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 rect(181, 510, vocalmapcirc, vocalmapcirc, cornerRadius);
@@ -233,20 +249,20 @@ rect(1213, 70, vocalmapcirc, vocalmapcirc, cornerRadius);
 
 //if statement 5
 if (seconds > 79.3 && seconds < 91){
-  
-// square bars from top and bottom 
-let lightblue = color(68, 246, 255)
-let darkblue = color(15, 107, 255)
-strokeWeight(1)
-drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 10)
+drawingContext.shadowBlur = 42 // standard glow amount 
+
+let lightblue = color(68, 246, 255) // light blue 
+let darkblue = color(15, 107, 255) // dark blue 
+strokeWeight(0)
 let lerpColorAmt; 
 let drumColor; 
+let drummap = map(drum,0, 100, 1, 10) // map based on drum volume 
 
+// blue squares rise and fall from top and bottom of screen, amount of squares based on drum 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+lerpColorAmt = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based in number of squares displayed
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt); // changes colour from light blue to dark blue based on number of squares displayed
 fill(drumColor)
 drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
@@ -356,21 +372,20 @@ rect(1213, rectstep, 60, 60, 10);
 
 // if statement 6
 if (seconds > 91 && seconds < 123) {
-
-// square bars from top and bottom outline
-let lightblue = color(68, 246, 255)
-let darkblue = color(15, 107, 255)
+drawingContext.shadowBlur = 42 // standard glow amount 
+let lightblue = color(68, 246, 255) // light blue
+let darkblue = color(15, 107, 255) // dark blue 
 strokeWeight(8)
 fill(0)
-drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 10)
+let drummap = map(drum,0, 100, 1, 10) // map based on drum volume 
 let lerpColorAmt; 
 let drumColor; 
 
+// blue squares outline rise and fall from top and bottom of screen, amount of squares based on drum 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+lerpColorAmt = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of squares displayed
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt); // changes colour from light blue to dark blue based on number of squares displayed
 drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
 rect(70, rectstep, 60, 60, 10);
@@ -469,21 +484,21 @@ rect(1213, rectstep, 60, 60, 10);
 
 // if statement 7
 if (seconds > 123 && seconds < 127.5) {
+drawingContext.shadowBlur = 42 // standard glow amount 
 
-// square bars from top and bottom outline with circles inisde
-let lightblue = color(68, 246, 255)
-let darkblue = color(15, 107, 255)
+// blue squares outline rise and fall from top and bottom of screen, amount of squares based on drum 
+let lightblue = color(68, 246, 255) // light blue 
+let darkblue = color(15, 107, 255) // dark blue 
 strokeWeight(8)
 fill(0)
-drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 10)
+let drummap = map(drum,0, 100, 1, 10) // map based on drum volume 
 let lerpColorAmt; 
 let drumColor; 
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+lerpColorAmt = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of squares displayed
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt); // changes colour from light blue to dark blue based on number of squares displayed
 drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
 rect(70, rectstep, 60, 60, 10);
@@ -579,22 +594,20 @@ stroke (drumColor)
 rect(1213, rectstep, 60, 60, 10);
 }
 
-
-// inside circles
-let lightpink = color(255, 125, 183)
-let darkpink = color(255, 35, 134)
+// pink circles outline are in blue squares outline and rise and fall from top and bottom of screen, amount based on drum 
+let lightpink = color(255, 125, 183) // light pink 
+let darkpink = color(255, 35, 134) // dark pink 
 strokeWeight(6)
 fill(0)
-drawingContext.shadowBlur = 42
-let drummap4= map(drum,0, 100, 1, 10)
+let drummap4= map(drum,0, 100, 1, 10) // map based on drum volume 
 let lerpColorAmt2; 
 let drumColor2; 
 
 
 for(let i = 1; i < drummap4; i++) {
 let rectstep = i*70;
-lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+lerpColorAmt2 = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of circles displayed
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2); // changes colour from light pink to dark pink based on number of circles displayed
 drawingContext.shadowColor = color(drumColor2)
 stroke (drumColor2)
 rect(70, rectstep, 25, 25, 100);
@@ -694,13 +707,15 @@ rect(1213, rectstep, 25, 25, 100);
 
 // if statement 8
 if (seconds > 127.5 && seconds < 146) {
-// big squares 
-fill (68, 246, 255) // light blue
-stroke (68, 246, 255)
-drawingContext.shadowBlur = 42
-drawingContext.shadowColor = color(68, 246, 255)
+drawingContext.shadowBlur = 42 // standard glow amount 
 
-let vocalmapcirc = map(vocal,0, 100, 45, 73)
+// big blue squares, size based on vocals
+let vocalopacity = map(vocal,0, 100, 160, 255)
+fill (68, 246, 255, vocalopacity) // light blue
+stroke (68, 246, 255, 0) // light pink
+drawingContext.shadowColor = color(68, 246, 255, vocalopacity) // light blue
+
+let vocalmapcirc = map(vocal,0, 100, 45, 73) // map based on vocal volume 
 rect(70, 140, vocalmapcirc, vocalmapcirc, 10);
 rect(293, 70, vocalmapcirc, vocalmapcirc, 10);
 rect(181, 510, vocalmapcirc, vocalmapcirc, 10);
@@ -721,23 +736,21 @@ rect(1213, 70, vocalmapcirc, vocalmapcirc, 10);
 
 // if statement 9
 if (seconds > 146 && seconds < 201.5) {
+drawingContext.shadowBlur = 42 // standard glow amount 
 
-// Circles and squares from top and bottom
-
-// circles
-let lightpink = color(255, 125, 183)
-let darkpink = color(255, 35, 134)
+// pink circles outline rise and fall from top and bottom of screen, amount of circles based on drum 
+let lightpink = color(255, 125, 183) // light pink 
+let darkpink = color(255, 35, 134) // dark pink 
 strokeWeight(8)
 fill(0)
-drawingContext.shadowBlur = 42
-let drummap = map(drum,0, 100, 1, 4)
+let drummap = map(drum,0, 100, 1, 4) // map based on drum volume 
 let lerpColorAmt2; 
 let drumColor2; 
 
 for(let i = 1; i < drummap; i++) {
 let rectstep = i*70;
-lerpColorAmt2 = map(i, 1, 7, 0,1)
-drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
+lerpColorAmt2 = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of circles displayed
+drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2); // changes colour from light pink to dark pink based on number of circles displayed
 drawingContext.shadowColor = color(drumColor2)
 stroke (drumColor2)
 rect(70, rectstep, 60, 60, 100);
@@ -835,22 +848,21 @@ stroke (drumColor2)
 rect(1213, rectstep, 60, 60, 100);
 }
 
-// Squares 
-let lightblue = color(68, 246, 255)
-let darkblue = color(15, 107, 255)
+// blue squares outline rise and fall from top and bottom of screen, amount of squares based on drum 
+let lightblue = color(68, 246, 255) // light blue 
+let darkblue = color(15, 107, 255) // dark blue 
 strokeWeight(8)
 fill(0)
-drawingContext.shadowBlur = 42
-let drummap2 = map(drum,0, 100, 1, 5)
-let vocalmapcirc = 60 //map(vocal,0, 100, 55, 64)
+let drummap2 = map(drum,0, 100, 1, 5) // map based on drum volume 
+let vocalmapcirc = 60 // map(vocal,0, 100, 55, 64)
 let lerpColorAmt; 
 let drumColor; 
 
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightblue, darkblue, lerpColorAmt);
+lerpColorAmt = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of squares displayed
+drumColor = lerpColor(lightblue, darkblue, lerpColorAmt); // changes colour from light blue to dark blue based on number of squares displayed
 drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
 rect(70, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
@@ -945,24 +957,22 @@ rect(1213, -rectstep+720, vocalmapcirc, vocalmapcirc, 10);
 }
 }
 
-// if statmeent 10
+// if statement 10
 if (seconds > 201.5 && seconds < 215) {
-  
-// Circles bars from top and bottom  
+drawingContext.shadowBlur = 42 // standard glow amount 
 
-let lightpink = color(255, 125, 183)
-let darkpink = color(255, 35, 134)
+// pink circles rise and fall from top and bottom of screen, amount of circles based on drum 
+let lightpink = color(255, 125, 183) // light pink 
+let darkpink = color(255, 35, 134) // dark pink 
 strokeWeight(1)
-drawingContext.shadowBlur = 42
 let lerpColorAmt; 
 let drumColor; 
-
-let drummap3 = map(drum,0, 100, 1, 8)
+let drummap3 = map(drum,0, 100, 1, 8) // map based on drum volume 
 
 for(let i = 1; i < drummap3; i++) {
 let rectstep = i*70;
-lerpColorAmt = map(i, 1, 7, 0,1)
-drumColor = lerpColor(lightpink, darkpink, lerpColorAmt);
+lerpColorAmt = map(i, 1, 7, 0,1) // sets colour change amount based on a map which is based on number of circles displayed
+drumColor = lerpColor(lightpink, darkpink, lerpColorAmt); // changes colour from light pink to dark pink based on number of circles displayed
 fill(drumColor)
 drawingContext.shadowColor = color(drumColor)
 stroke (drumColor)
