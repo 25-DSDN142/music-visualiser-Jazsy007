@@ -11,16 +11,6 @@ let seconds = counter/60; // used for working out the if statements
 background(0); // black background 
 rectMode(CENTER);
 
-// /////////// to delete 
-//   textFont('Impact'); // CSS safe font
-
-// fill(255)
-//    textAlign(CENTER);
-//    textSize(20);
-//    text(seconds, 200, 360);
-// ////////////
-
-
  // Initialize background lights only once
 if (!initialized) {
     for (let i = 0; i < NumLights; i++) {
@@ -621,10 +611,10 @@ rect(408, -rectstep+720, 25, 25, 100);
 
 for(let i = 1; i < drummap2; i++) {
 let rectstep = i*70;
-lerpColorAmt2 = map(i, 1, 7, 0,1)
+lerpColorAmt2 = map(i, 1, 7, 0,1);
 drumColor2 = lerpColor(lightpink, darkpink, lerpColorAmt2);
-drawingContext.shadowColor = color(drumColor2)
-stroke (drumColor2)
+drawingContext.shadowColor = color(drumColor2);
+stroke (drumColor2);
 rect(523, rectstep, 25, 25, 100);
 }
 
